@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Santa Cruz Offsite 2026 · Pick your afternoon</title>
+    <meta name="description"
+        content="Bikes, redwoods, disc golf, cornhole, Capitola, or nowhere to be. Pick one — the Point engineering offsite in Aptos, California.">
+    <meta name="theme-color" content="#FAF7F2">
+
+    <!-- Slack/link previews. og:image has to be absolute — relative paths
+         unfurl unreliably. Update both URLs if the site moves. -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelpoint.github.io/eng-offsite-9-2026/">
+    <meta property="og:title" content="Pick your afternoon">
+    <meta property="og:description"
+        content="Bikes, redwoods, disc golf, cornhole, Capitola, or nowhere to be. The one you pick is your lunch and dinner crew too.">
+    <meta property="og:image" content="https://michaelpoint.github.io/eng-offsite-9-2026/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='11' fill='%23FDE047'/><circle cx='16' cy='16' r='7' fill='%23FB923C'/></svg>">
+</head>
+
+<body>
+
+    <!-- ============================= sticky header ============================= -->
+    <header class="topbar" id="topbar">
+        <div class="wrap bar">
+            <a class="brand" href="#top"><span class="mark"></span> Point <b>Offsite '26</b></a>
+
+            <div class="bar-right">
+                <a class="barlink" href="#week">The full week <span aria-hidden="true">↓</span></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="wrap" id="top">
+
+        <!-- ============================= hero ============================= -->
+        <section class="hero">
+            <div class="sun" aria-hidden="true"></div>
+
+            <p class="eyebrow">
+                <span>Point Engineering</span><span class="dot">◆</span>
+                <span>Santa Cruz County, California</span><span class="dot">◆</span>
+                <span>Wed 30 September 2026</span>
+            </p>
+
+            <h1>Pick your <em>afternoon</em>.</h1>
+
+            <p class="standfirst">
+                After the morning's kickoff sessions, the afternoon is yours. The one you pick is roughly who you'll
+                have lunch and dinner with too — not a rule, just how the day is shaped. Put your name down so we
+                can size rentals, cars, and tables. Change your mind whenever, just move your name.
+            </p>
+
+            <div class="venue">
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Basecamp · Seacliff Inn, Aptos
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                        <path d="M16 2v4M8 2v4M3 10h18" />
+                    </svg>
+                    Wed 30 Sept · 12:30 to 8:00
+                </span>
+                <span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+                    </svg>
+                    71°F · marine layer burns off by noon
+                </span>
+                <span class="due">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 2" />
+                    </svg>
+                    Sign up by <b id="deadlineChip"></b>
+                </span>
+            </div>
+
+            <p class="confession">
+                Sure, this could have been a Slack poll.<br>
+                But we're engineers. Sometimes we over-engineer.<br>
+                So I built a website with Claude. Map included.
+            </p>
+
+        </section>
+
+        <!-- ============================= filters ============================= -->
+        <div class="rail" role="group" aria-label="Filter activities">
+            <button class="pill" data-filter="all" aria-pressed="true">All <span class="n">6</span></button>
+            <button class="pill" data-filter="chill" aria-pressed="false">Chill <span class="n"></span></button>
+            <button class="pill" data-filter="active" aria-pressed="false">Active <span class="n"></span></button>
+            <button class="pill" data-filter="dine" aria-pressed="false">Drink &amp; Dine <span
+                    class="n"></span></button>
+            <button class="dice" id="pickForMe" type="button">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="18" height="18" rx="4" />
+                    <circle cx="8.5" cy="8.5" r="1.3" fill="currentColor" stroke="none" />
+                    <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none" />
+                    <circle cx="15.5" cy="15.5" r="1.3" fill="currentColor" stroke="none" />
+                </svg>
+                Can't decide?
+            </button>
+            <span class="spacer"></span>
+            <span class="hint" id="pickHint">One pick per person</span>
+        </div>
+
+        <!-- ============================= cards ============================= -->
+        <div class="grid" id="grid"></div>
+
+        <!-- ============================= map ============================= -->
+        <section class="sec">
+            <p class="sec-label">The chart</p>
+            <div class="chart">
+                <svg viewBox="0 0 800 540" role="img"
+                    aria-label="Stylized chart of Aptos and the surrounding coast showing the six activity locations.">
+                    <defs>
+                        <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)"
+                            patternUnits="userSpaceOnUse">
+                            <line x1="0" y1="0" x2="0" y2="7" stroke="#B7CBC9" stroke-width="1" />
+                        </pattern>
+                        <clipPath id="seaClip">
+                            <path
+                                d="M-20 460 C 120 432, 260 412, 373 407 S 560 405, 640 407 C 700 411, 760 432, 820 449 L 820 560 L -20 560 Z" />
+                        </clipPath>
+                    </defs>
+
+                    <rect x="0" y="0" width="800" height="540" fill="#F7F1E4" />
+
+                    <g fill="none" stroke="#E4D9C2" stroke-width="1">
+                        <path d="M40 40 C 190 8, 340 62, 470 34 S 700 4, 800 46" />
+                        <path d="M20 96 C 180 66, 330 122, 468 92 S 690 62, 800 104" />
+                        <path d="M10 154 C 170 128, 320 180, 462 150 S 682 122, 800 162" />
+                        <path d="M30 214 C 180 190, 320 238, 458 210 S 676 184, 800 222" />
+                        <path d="M60 274 C 200 254, 330 296, 456 272 S 668 248, 800 282" />
+                        <path d="M110 332 C 240 316, 350 350, 462 330 S 672 310, 800 340" />
+                    </g>
+                    <g fill="none" stroke="#DCCFB2" stroke-width="1.2">
+                        <path d="M560 62 C 620 40, 690 58, 742 40" />
+                        <path d="M572 92 C 628 72, 692 88, 748 72" />
+                        <path d="M584 122 C 636 104, 694 118, 752 104" />
+                    </g>
+
+                    <g clip-path="url(#seaClip)">
+                        <rect x="0" y="380" width="800" height="180" fill="#DCEAE9" />
+                        <rect x="0" y="380" width="800" height="180" fill="url(#hatch)" opacity=".45" />
+                        <g fill="none" stroke="#C6DBD9" stroke-width="1">
+                            <path d="M-20 480 C 140 456, 300 438, 460 434 S 700 442, 820 468" />
+                            <path d="M-20 512 C 140 490, 300 472, 460 468 S 700 476, 820 500" />
+                        </g>
+                    </g>
+
+                    <path d="M-20 460 C 120 432, 260 412, 373 407 S 560 405, 640 407 C 700 411, 760 432, 820 449"
+                        fill="none" stroke="#1F2937" stroke-width="1.6" />
+
+                    <text x="286" y="505" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="19"
+                        letter-spacing="7" fill="#7FA3A0">MONTEREY BAY</text>
+                    <text x="392" y="452" font-family="Fraunces,Georgia,serif" font-style="italic" font-size="13"
+                        fill="#A8306A">tide's in — that's why there's no tide pool option</text>
+
+                    <g stroke="#6B7280" fill="#6B7280">
+                        <line x1="762" y1="500" x2="762" y2="466" stroke-width="1.2" />
+                        <path d="M762 460 l5 11 l-5 -3 l-5 3 Z" />
+                        <text x="756" y="518" font-family="IBM Plex Mono,monospace" font-size="11"
+                            stroke="none">N</text>
+                    </g>
+                    <g stroke="#6B7280" stroke-width="1.2" fill="none">
+                        <line x1="40" y1="500" x2="128" y2="500" />
+                        <line x1="40" y1="495" x2="40" y2="505" />
+                        <line x1="84" y1="496" x2="84" y2="504" />
+                        <line x1="128" y1="495" x2="128" y2="505" />
+                    </g>
+                    <text x="40" y="518" font-family="IBM Plex Mono,monospace" font-size="10.5" letter-spacing="1"
+                        fill="#6B7280">0 ——— 2 mi (roughly)</text>
+
+                    <g id="pins"></g>
+                </svg>
+                <div class="legend">
+                    <span>◆ Numbered by vibe — 1 is the chillest, 6 will make you sweat</span>
+                    <span>◆ The ringed pin is basecamp — the hotel hang never needs a car</span>
+                    <span>◆ Cost is what the afternoon runs you: $ under 15 · $$ 15–40 · $$$ 40+</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================= conditions ============================= -->
+        <section class="sec">
+            <p class="sec-label">Wednesday, 12:30 to 8</p>
+            <div class="strip">
+                <div class="panel">
+                    <h3>How the block runs</h3>
+                    <p class="panel-note">The official agenda blocks 12:30 to 8:00 as a single line — lunch, group
+                        activity, dinner. This is how that actually splits.</p>
+                    <ul class="tl" id="schedule"></ul>
+                </div>
+                <div class="panel">
+                    <h3>Late September on this coast</h3>
+                    <div class="temps">
+                        <span class="temp"><span class="v">71°F / 22°C</span><span class="k">Typical high</span></span>
+                        <span class="temp"><span class="v">52°F / 11°C</span><span class="k">Typical low</span></span>
+                    </div>
+                    <p class="wx">
+                        This is actually the warm season here, warmer than mid-summer. Mornings often start under a
+                        marine layer that burns off by noon, and afternoons are usually clear and mild. The ocean sits
+                        around 59°F / 15°C, which is colder than it looks. Bring a layer for the evening. It drops fast
+                        once the sun goes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="paynote">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path
+                        d="M14.6 9.4A2.6 2.6 0 0 0 12 8c-1.4 0-2.6.8-2.6 2s1.2 2 2.6 2 2.6.9 2.6 2-1.2 2-2.6 2a2.6 2.6 0 0 1-2.6-1.4" />
+                    <path d="M12 6.4v11.2" />
+                </svg>
+                <p>
+                    <b>Who pays:</b> Point covers lunch, and dinner with drinks. Everything the afternoon itself costs
+                    is on you — bike rental, about $7 a head for discs, a few dollars for parking, and, if you spend it
+                    in a beer garden, however many beers "one beer" turns out to be. Sort that out with whoever is
+                    leading your group. The hotel hang and the redwood hike cost nothing at all, and Capitola only costs
+                    whatever coffee you talk yourself into.
+                </p>
+            </div>
+
+            <div class="paynote">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="5" width="18" height="16" rx="2" />
+                    <path d="M3 10h18M8 3v4M16 3v4" />
+                </svg>
+                <p>
+                    <b>Group leads, book early:</b> every card has a "food recommendations" button with a few lunch and
+                    dinner options near that activity. Pick one for your group and call them. Sign-ups close 5 days
+                    before the offsite, which is later than most of these places want a headcount, so book on your best
+                    estimate in early September and adjust after. Zelda's and The Sand Bar want a reservation well
+                    ahead for a table this size, and Showtime takes no reservations at all, so that one is a phone
+                    order.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================= the whole week ============================= -->
+        <section class="sec" id="week">
+            <p class="sec-label">The whole week</p>
+
+            <div class="weekintro">
+                <p class="panel-note">Tuesday is a travel day — get in when you get in. Drinks and hanging out from 6
+                    isn't something you can be late for; you'll find other Pointers at the hotel bar or wandering
+                    around. Any further details will get updated here.</p>
+                <button class="btn-ics" id="btnIcs" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="16" rx="2" />
+                        <path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4" />
+                    </svg>
+                    Add the whole week
+                </button>
+            </div>
+
+            <div class="ribbon" id="ribbon"></div>
+            <div class="days" id="agenda"></div>
+
+            <div class="paynote tall">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.8.8 0 0 0-.7 1.3l4.3 4.3-2 4.2-2.2.6a.6.6 0 0 0-.2 1l2.4 1.6 1.6 2.4a.6.6 0 0 0 1-.2l.6-2.2 4.2-2 4.3 4.3a.8.8 0 0 0 1.3-.7Z" />
+                </svg>
+                <p>
+                    <b>Getting here:</b> flights are booked. Most people are flying into San Jose (SJC), about 45
+                    minutes from the hotel, and some are coming through SFO, which is more like an hour and a half.
+                    Aptos is small and rideshare out here is patchy, so getting from the airport is something we're
+                    organising rather than leaving to chance. More information on rideshares coming soon.
+                </p>
+            </div>
+
+            <div class="paynote tall">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path
+                        d="M14.6 9.4A2.6 2.6 0 0 0 12 8c-1.4 0-2.6.8-2.6 2s1.2 2 2.6 2 2.6.9 2.6 2-1.2 2-2.6 2a2.6 2.6 0 0 1-2.6-1.4" />
+                    <path d="M12 6.4v11.2" />
+                </svg>
+                <p>
+                    <b>Expenses:</b> Point covers flights, the hotel, and every meal on the agenda — lunches and dinners
+                    with drinks. What the afternoon activity itself costs is on you, as is anything personal on top.
+                    Keep track of any receipts you need for expensing.
+                </p>
+            </div>
+        </section>
+
+        <p class="foot" id="foot"></p>
+    </main>
+
+    <!-- ============================= sign-up modal ============================= -->
+    <div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal" role="document">
+            <div class="modal-top">
+                <span class="glyph" id="modalGlyph" aria-hidden="true"></span>
+                <div>
+                    <h3 id="modalTitle">—</h3>
+                    <p class="sub" id="modalSub">Sign up</p>
+                </div>
+            </div>
+
+            <div class="moving" id="moving">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 9v4M12 17h.01" />
+                    <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+                </svg>
+                <span id="movingText"></span>
+            </div>
+
+            <div class="f">
+                <label for="fName">Your name</label>
+                <input type="text" id="fName" placeholder="e.g. Ryan Evans" autocomplete="off" spellcheck="false">
+                <p class="hint flush">Your group needs to know who's coming, so this one is required.</p>
+            </div>
+
+            <div class="f">
+                <label class="check">
+                    <input type="checkbox" id="fDrive"> I have a vehicle and can shuttle people
+                </label>
+                <div class="seatrow">
+                    <label for="fSeats">Open seats</label>
+                    <input type="number" id="fSeats" min="0" max="12" step="1" value="3" disabled>
+                </div>
+                <p class="hint">Not counting yourself.</p>
+            </div>
+
+            <div class="f">
+                <label for="fNote">Anything else? (optional)</label>
+                <textarea id="fNote"
+                    placeholder="Timing constraints, dietary restrictions gear you can bring, restaurant preferences, questions…"></textarea>
+                <p class="hint flush">Goes to Ryan and your group lead. It doesn't show up on this page.</p>
+            </div>
+
+            <p class="err" id="fErr"></p>
+
+            <div class="acts">
+                <button class="btn btn-quiet" id="btnCancel" type="button">Cancel</button>
+                <button class="btn btn-primary" id="btnSave" type="button">Sign me up</button>
+            </div>
+            <button class="btn btn-leave" id="btnLeave" type="button">Take my name off this one</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
