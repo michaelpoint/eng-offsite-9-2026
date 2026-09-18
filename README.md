@@ -99,7 +99,11 @@ Everything readable lives in `app.js`:
 ```js
 {
     start: "09:30", end: "10:15",   // 24h, Pacific. Both required.
-    title: "Kickoff",               // required
+    title: "Kickoff",               // required — short label for the ribbon and day panel
+    cal: "KickOff - Bavyaa / Elissa", // optional — full title for "Add to calendar" / the .ics.
+                                     // Falls back to `title` when omitted. Use this when the
+                                     // master schedule's wording is longer than what fits as
+                                     // an on-page label, so exported events still read verbatim.
     kind: "session",                // meal · session · activity · social · logistics
     where: "Dining Room",           // optional; also feeds the calendar links
     map: "https://...",             // optional; makes `where` a link

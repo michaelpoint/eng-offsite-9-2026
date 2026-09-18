@@ -465,16 +465,18 @@ const AGENDA = [
         blocks: [
             {
                 start: "06:00", end: "23:00", title: "Travel", kind: "logistics", quiet: true,
+                cal: "Travel to Aptos",
                 detail: "People land across the whole day. There is nothing to be on time for."
             },
             {
                 start: "18:30", end: "20:30", title: "Dinner and drinks", kind: "meal",
-                where: "Sevy's Bar + Kitchen",
+                where: "Sevy's Bar + Kitchen", cal: "Dinner and drinks (at hotel)",
                 map: "https://www.google.com/maps/search/?api=1&query=Sevys+Bar+Kitchen+Seacliff+Inn+Aptos",
                 detail: "At Sevy's, the hotel's own kitchen. Point covers dinner and drinks."
             },
             {
                 start: "20:30", end: "23:00", title: "Hangout", kind: "social", open: true,
+                cal: "Hangout - On Your Own",
                 detail: "On your own from here. You'll likely find people at the bar or wandering around the hotel."
             }
         ]
@@ -482,17 +484,19 @@ const AGENDA = [
     {
         date: "2026-09-30", label: "Wed 30 Sept", sub: "Kickoff, then your afternoon",
         blocks: [
-            { start: "08:00", end: "09:30", title: "Breakfast", kind: "meal", where: "Dining Room" },
+            { start: "08:00", end: "09:30", title: "Breakfast", kind: "meal", where: "Dining Room", cal: "Breakfast (Dining Room)" },
             {
                 start: "09:30", end: "10:15", title: "Kickoff", kind: "session",
+                cal: "KickOff - Bavyaa / Elissa",
                 detail: "Bavyaa and Elissa."
             },
-            { start: "10:15", end: "11:15", title: "Breakout sessions", kind: "session" },
+            { start: "10:15", end: "11:15", title: "Breakout sessions", kind: "session", cal: "Breakout Sessions" },
             { start: "11:15", end: "11:30", title: "Break", kind: "logistics" },
-            { start: "11:30", end: "12:30", title: "Team building exercise", kind: "session" },
+            { start: "11:30", end: "12:30", title: "Team building exercise", kind: "session", cal: "Team Building Exercise" },
             {
                 start: "12:30", end: "20:00", title: "Lunch + group activity + dinner",
                 kind: "activity", pick: true, open: true,
+                cal: "Group Activity (Lunch and Dinner with Your Group)",
                 detail: "Whichever of the six you put your name on."
             }
         ]
@@ -501,19 +505,20 @@ const AGENDA = [
         date: "2026-10-01", label: "Thu 1 Oct", sub: "Hackathon day",
         blocks: [
             { start: "08:00", end: "09:30", title: "Breakfast", kind: "meal", where: "Dining Room" },
-            { start: "09:30", end: "10:00", title: "Hackathon team organization", kind: "session" },
+            { start: "09:30", end: "10:00", title: "Hackathon team organization", kind: "session", cal: "Hackathon (Finalize Affiliations)" },
             { start: "10:00", end: "12:00", title: "Hackathon", kind: "session" },
-            { start: "12:00", end: "12:10", title: "Group picture", kind: "logistics" },
-            { start: "12:10", end: "13:00", title: "Lunch", kind: "meal", where: "On property" },
-            { start: "13:00", end: "18:30", title: "Hackathon continues", kind: "session", open: true },
+            { start: "12:00", end: "12:10", title: "Group picture", kind: "logistics", cal: "Group Picture" },
+            { start: "12:10", end: "13:00", title: "Lunch", kind: "meal", where: "On property", cal: "Lunch (at hotel)" },
+            { start: "13:00", end: "18:30", title: "Hackathon continues", kind: "session", open: true, cal: "Hackathon Continues" },
             {
                 start: "18:30", end: "20:30", title: "Dinner and drinks", kind: "meal",
-                where: "Sevy's Bar + Kitchen",
+                where: "Sevy's Bar + Kitchen", cal: "Dinner and drinks (at hotel)",
                 map: "https://www.google.com/maps/search/?api=1&query=Sevys+Bar+Kitchen+Seacliff+Inn+Aptos",
                 detail: "At Sevy's again. Point covers dinner and drinks."
             },
             {
                 start: "22:30", end: "23:30", title: "Late night Mexican", kind: "social", open: true,
+                cal: "Late Night Mexican (optional)",
                 detail: "Optional."
             }
         ]
@@ -523,14 +528,17 @@ const AGENDA = [
         blocks: [
             { start: "08:00", end: "09:30", title: "Breakfast", kind: "meal", where: "Dining Room" },
             {
-                start: "09:30", end: "11:30", title: "Hackathon and design presentations", kind: "session"
+                start: "09:30", end: "11:30", title: "Hackathon and design presentations", kind: "session",
+                cal: "Hackathon / Design Presentations"
             },
             {
                 start: "11:30", end: "12:00", title: "Winner announcement", kind: "session",
+                cal: "Hackathon Winner Announcement - Bavyaa / Elissa - Final Remarks",
                 detail: "Plus final remarks from Bavyaa and Elissa."
             },
             {
                 start: "12:00", end: "13:00", title: "Bye bye", kind: "logistics",
+                cal: "Bye Bye - Depart, Lunch on Your Own",
                 detail: "Checkout, airport runs, and lunch on your own — the end of it."
             }
         ]
@@ -1088,10 +1096,14 @@ function buildAgenda() {
    UTC — same result, no arithmetic, and it stays right if a date ever moves
    across a DST boundary. */
 
-/* the afternoon block becomes your actual activity once you've signed up */
+/* the afternoon block becomes your actual activity once you've signed up.
+   `cal` is the block's full calendar-export title, matching the source
+   schedule verbatim; it falls back to the on-page `title` when the two
+   already agree, so calendar events read exactly like the master schedule
+   even where the ribbon/day-panel show a shorter label. */
 function calTitle(day, b) {
     const mine = b.pick && myPick();
-    return mine ? "Offsite: " + byId(mine.id).title : "Offsite: " + b.title;
+    return mine ? "Offsite: " + byId(mine.id).title : "Offsite: " + (b.cal || b.title);
 }
 function calDetail(day, b) {
     const mine = b.pick && myPick();

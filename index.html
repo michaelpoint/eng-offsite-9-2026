@@ -108,6 +108,69 @@
 
         </section>
 
+        <!-- ============================= the whole week ============================= -->
+        <section class="sec" id="week">
+            <p class="sec-label">The whole week</p>
+
+            <div class="weekintro">
+                <p class="panel-note">Tuesday is a travel day — get in when you get in. Drinks and hanging out from 6
+                    isn't something you can be late for; you'll find other Pointers at the hotel bar or wandering
+                    around. Any further details will get updated here.</p>
+                <button class="btn-ics" id="btnIcs" type="button">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="5" width="18" height="16" rx="2" />
+                        <path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4" />
+                    </svg>
+                    Add the whole week
+                </button>
+            </div>
+
+            <div class="ribbon" id="ribbon"></div>
+            <div class="days" id="agenda"></div>
+
+            <div class="paynote tall">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.8.8 0 0 0-.7 1.3l4.3 4.3-2 4.2-2.2.6a.6.6 0 0 0-.2 1l2.4 1.6 1.6 2.4a.6.6 0 0 0 1-.2l.6-2.2 4.2-2 4.3 4.3a.8.8 0 0 0 1.3-.7Z" />
+                </svg>
+                <p>
+                    <b>Getting here:</b> flights are booked. Most people are flying into San Jose (SJC), about 45
+                    minutes from the hotel, and some are coming through SFO, which is more like an hour and a half.
+                    Aptos is small and rideshare out here is patchy, so getting from the airport is something we're
+                    organising rather than leaving to chance. More information on rideshares coming soon.
+                </p>
+            </div>
+
+            <div class="paynote tall">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path
+                        d="M14.6 9.4A2.6 2.6 0 0 0 12 8c-1.4 0-2.6.8-2.6 2s1.2 2 2.6 2 2.6.9 2.6 2-1.2 2-2.6 2a2.6 2.6 0 0 1-2.6-1.4" />
+                    <path d="M12 6.4v11.2" />
+                </svg>
+                <p>
+                    <b>Expenses:</b> Point covers flights, the hotel, and every meal on the agenda — lunches and dinners
+                    with drinks. Keep track of any receipts you need for expensing beyond that.
+                </p>
+            </div>
+        </section>
+
+        <div class="paynote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path
+                    d="M14.6 9.4A2.6 2.6 0 0 0 12 8c-1.4 0-2.6.8-2.6 2s1.2 2 2.6 2 2.6.9 2.6 2-1.2 2-2.6 2a2.6 2.6 0 0 1-2.6-1.4" />
+                <path d="M12 6.4v11.2" />
+            </svg>
+            <p>
+                <b>Who pays:</b> Food is covered, but direct expenses associated with the activity will be your
+                responsibility.
+            </p>
+        </div>
+
         <!-- ============================= filters ============================= -->
         <div class="rail" role="group" aria-label="Filter activities">
             <button class="pill" data-filter="all" aria-pressed="true">All <span class="n">6</span></button>
@@ -262,56 +325,6 @@
                     estimate in early September and adjust after. Zelda's and The Sand Bar want a reservation well
                     ahead for a table this size, and Showtime takes no reservations at all, so that one is a phone
                     order.
-                </p>
-            </div>
-        </section>
-
-        <!-- ============================= the whole week ============================= -->
-        <section class="sec" id="week">
-            <p class="sec-label">The whole week</p>
-
-            <div class="weekintro">
-                <p class="panel-note">Tuesday is a travel day — get in when you get in. Drinks and hanging out from 6
-                    isn't something you can be late for; you'll find other Pointers at the hotel bar or wandering
-                    around. Any further details will get updated here.</p>
-                <button class="btn-ics" id="btnIcs" type="button">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <rect x="3" y="5" width="18" height="16" rx="2" />
-                        <path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4" />
-                    </svg>
-                    Add the whole week
-                </button>
-            </div>
-
-            <div class="ribbon" id="ribbon"></div>
-            <div class="days" id="agenda"></div>
-
-            <div class="paynote tall">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" aria-hidden="true">
-                    <path d="M17.8 19.2 16 11l3.5-3.5a2.1 2.1 0 0 0-3-3L13 8 4.8 6.2a.8.8 0 0 0-.7 1.3l4.3 4.3-2 4.2-2.2.6a.6.6 0 0 0-.2 1l2.4 1.6 1.6 2.4a.6.6 0 0 0 1-.2l.6-2.2 4.2-2 4.3 4.3a.8.8 0 0 0 1.3-.7Z" />
-                </svg>
-                <p>
-                    <b>Getting here:</b> flights are booked. Most people are flying into San Jose (SJC), about 45
-                    minutes from the hotel, and some are coming through SFO, which is more like an hour and a half.
-                    Aptos is small and rideshare out here is patchy, so getting from the airport is something we're
-                    organising rather than leaving to chance. More information on rideshares coming soon.
-                </p>
-            </div>
-
-            <div class="paynote tall">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                    stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="12" cy="12" r="9" />
-                    <path
-                        d="M14.6 9.4A2.6 2.6 0 0 0 12 8c-1.4 0-2.6.8-2.6 2s1.2 2 2.6 2 2.6.9 2.6 2-1.2 2-2.6 2a2.6 2.6 0 0 1-2.6-1.4" />
-                    <path d="M12 6.4v11.2" />
-                </svg>
-                <p>
-                    <b>Expenses:</b> Point covers flights, the hotel, and every meal on the agenda — lunches and dinners
-                    with drinks. What the afternoon activity itself costs is on you, as is anything personal on top.
-                    Keep track of any receipts you need for expensing.
                 </p>
             </div>
         </section>
