@@ -1047,14 +1047,15 @@ function buildRibbon() {
             (b.quiet ? " is-quiet" : "") + (b.open ? " is-open" : "") +
             (b.pick ? " is-pick" : "") +
             (len >= 60 ? " is-tall" : "") + (len < 30 ? " is-tiny" : "");
+        /* the box itself prints the full schedule wording now that it has the
+           height and line-clamp to hold it (see .ab b); the tooltip repeats
+           it for the sliver-sized blocks that still can't show any text */
+        const full = b.cal || b.title;
         return '<a class="' + cls + '" href="#' + blockId(d, i) + '"' +
             ' style="grid-column:' + (c + 2) + ';grid-row:' +
             rowOf(b.start, win.from) + "/" + endRow(b, win.from) + '"' +
-            /* the box itself keeps the short label — it's a fixed-width sliver
-               for a 5-minute block — but the hover tooltip carries the full
-               schedule wording, same text as the calendar exports */
-            ' title="' + esc(whenLabel(b) + " · " + (b.cal || b.title)) + '">' +
-            "<b>" + esc(b.title) + "</b><i>" + esc(whenLabel(b)) + "</i></a>";
+            ' title="' + esc(whenLabel(b) + " · " + full) + '">' +
+            "<b>" + esc(full) + "</b><i>" + esc(whenLabel(b)) + "</i></a>";
     }).join("")).join("");
 
     $("ribbon").innerHTML =

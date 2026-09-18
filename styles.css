@@ -2274,7 +2274,7 @@ ul.notes li::before {
 
 /* ---- layer 1: the ribbon ---- */
 .ribbon {
-    --slot: 10px;
+    --slot: 14px;
     --ax: 44px;
     margin: 20px 0 0;
     padding: 16px 18px 18px;
@@ -2367,14 +2367,16 @@ ul.notes li::before {
     z-index: 2
 }
 
+/* full schedule wording now, not the short label — wraps up to two lines
+   and quietly ellipsizes past that rather than cutting a title in half */
 .ab b {
-    display: block;
-    font-size: 10px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 9px;
     font-weight: 600;
-    line-height: 1.15;
-    white-space: nowrap;
+    line-height: 1.2;
     overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .ab i {
@@ -2417,9 +2419,9 @@ ul.notes li::before {
 }
 
 .ab.is-tall b {
-    font-size: 10.5px;
-    line-height: 1.24;
-    white-space: normal
+    font-size: 9.5px;
+    line-height: 1.22;
+    -webkit-line-clamp: 3;
 }
 
 .ab.is-tall i {
