@@ -1050,7 +1050,10 @@ function buildRibbon() {
         return '<a class="' + cls + '" href="#' + blockId(d, i) + '"' +
             ' style="grid-column:' + (c + 2) + ';grid-row:' +
             rowOf(b.start, win.from) + "/" + endRow(b, win.from) + '"' +
-            ' title="' + esc(whenLabel(b) + " · " + b.title) + '">' +
+            /* the box itself keeps the short label — it's a fixed-width sliver
+               for a 5-minute block — but the hover tooltip carries the full
+               schedule wording, same text as the calendar exports */
+            ' title="' + esc(whenLabel(b) + " · " + (b.cal || b.title)) + '">' +
             "<b>" + esc(b.title) + "</b><i>" + esc(whenLabel(b)) + "</i></a>";
     }).join("")).join("");
 
@@ -1069,10 +1072,13 @@ function buildAgenda() {
             '<li class="' + (b.pick ? "pick" : b.quiet ? "quiet" : "") + '" id="' + blockId(d, i) + '">' +
             '<span class="when">' + esc(whenLabel(b)) + "</span>" +
             '<div class="track">' +
-            /* the calendar link rides on the title line rather than under the row */
-            '<div class="row-head"><b>' + esc(b.title) + "</b>" +
+            /* the calendar link rides on the title line rather than under the row.
+               the header prints the full schedule wording (`cal`, when a block
+               has one) rather than the ribbon's short label, since this panel
+               is "the words" — the one place nothing should be shortened */
+            '<div class="row-head"><b>' + esc(b.cal || b.title) + "</b>" +
             '<a class="cal" href="' + gcalURL(d, b) + '" target="_blank" rel="noopener noreferrer"' +
-            ' aria-label="Add ' + esc(b.title) + ' to Google Calendar">' + ICON.cal + "GCal</a></div>" +
+            ' aria-label="Add ' + esc(b.cal || b.title) + ' to Google Calendar">' + ICON.cal + "GCal</a></div>" +
             (b.detail || b.pick
                 ? '<span class="what"' + (b.pick ? ' id="agendaPick"' : "") + ">" +
                   esc(b.detail || "") + "</span>"

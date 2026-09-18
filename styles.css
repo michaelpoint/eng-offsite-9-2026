@@ -2576,6 +2576,22 @@ ul.notes li::before {
     margin-top: 3px
 }
 
+/* the combined "who pays" note carries more weight on the page, so it reads
+   larger than the standard paynote size */
+.paynote.lg {
+    padding: 22px 26px
+}
+
+.paynote.lg p {
+    font-size: 1.08rem;
+    line-height: 1.65
+}
+
+.paynote.lg svg {
+    width: 24px;
+    height: 24px
+}
+
 @media (max-width:1000px) {
     .days {
         grid-template-columns: 1fr
